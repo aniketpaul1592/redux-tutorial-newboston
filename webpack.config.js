@@ -8,17 +8,13 @@ module.exports = {
         port: 4321
     },
     devtool: 'cheap-module-eval-source-map',
-    entry: './dev/js/index.js',
+    entry: 'redux-tutorial-newboston/dev/js/index.js',
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 loaders: ['babel'],
                 exclude: /node_modules/
-            },
-            {
-                test: /\.scss/,
-                loader: 'style-loader!css-loader!sass-loader'
             }
         ]
     },

@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
+import TakeData from '../actions/actionTakeDataOnClick.js'
 class UserList extends Component{
 
 	render(){
-		console.log(this.props.users);
 		return (
 			<div>
 				<ul>
 					{this.props.users.map(item=>
-						<li key = {item.id} >{item.first}</li>
+						<li key = {item.id} onClick={()=>this.props.TakeData(item)}>{item.first}</li>
 					)}
 				</ul>
 			</div>
@@ -19,10 +18,13 @@ class UserList extends Component{
 }
 
 function mapStateToProps(state){
-	console.log(state);
 	return{
 		users: state.userDetails
 	};
 }
 
-export default connect(mapStateToProps)(UserList);
+function matchDispatchToProps(dispatch){
+	return bindActionCreators({TakeData:TakeData},dispatch);
+}
+
+export default connect(mapStateToProps,matchDispatchToProps)(UserList);
